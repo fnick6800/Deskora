@@ -26,8 +26,8 @@ Deskora 是一款面向 Windows 11 的原生桌面整理工具。用透明分类
 | 轻量设计 | 原生 WPF、单文件 EXE，无需另装 .NET 运行时；实际下载大小见 Releases。 |
 | 动态分辨率自适应 | 根据分辨率、系统缩放和可用空间调整布局，适应不同桌面尺寸。当前版本以单屏桌面为范围。 |
 | 动效可选 | 柔和、暴力、无，按喜好选择；动画反馈不改变回收站与永久删除的实际操作含义。 |
-| 多页便签 | 随手记录、滚轮翻页，支持富文本、图片与单页固定。 |
-| 分类备份与导入 | 将设置、布局、分类归属和排序导出为 `.des` 配置包，换机后导入并匹配新电脑已有的桌面项目。 |
+| 多页便签与便签墙 | 富文本、图片、配色与单页固定；便签墙集中查看和编辑，支持批量选择及便签回收站恢复。 |
+| 分类与便签备份 | 将设置、分类布局与排序、便签正文及图片导出为 `.des` 包，方便换机迁移。 |
 | 桌面搜索 | 快速查找桌面文件，减少翻找。 |
 
 ![Deskora — Your space. Your flow. / 随手记录，轻松换机](promo-workflow.png)
@@ -39,17 +39,19 @@ Deskora 是一款面向 Windows 11 的原生桌面整理工具。用透明分类
 3. 根据首次引导选择是否导入桌面项目。通过桌面右键的 **Deskora** 菜单管理显示、分类及设置。
 4. 在设置中选择动效，按需要显示或隐藏便签及其他桌面组件。
 
-### 换机时怎样保留分类
+### 换机时怎样保留分类和便签
 
 1. 在旧电脑打开 **设置 → 配置迁移 → 导出配置**，保存 `.des` 文件。
 2. 自行把需要的真实文件复制到新电脑桌面。
 3. 在新电脑运行 Deskora，选择 **导入配置**，查看预览后确认。
 
-配置包包含设置、分类布局、图标归属与顺序，**不包含实际文件、便签正文或附件**。导入仅匹配当前桌面已存在的项目，缺失或无法唯一匹配的项目会跳过；不会覆盖便签或本机开机启动设置。导入前自动保留一份配置备份。
+从 2.3.4 起，新版 `.des` 包包含设置、分类布局、图标归属与顺序，以及**便签正文、富文本、图片、配色、图钉位置和便签回收站**，不包含桌面文件本身。分类仅匹配当前桌面已有项目，缺失或无法唯一匹配的项目会跳过；便签合并导入，内容冲突保留双方，重复导入不重复生成相同副本。本机开机启动选择保持，导入前自动保留一份完整备份。
+
+旧版配置包仍可导入，但无法恢复当时未导出的便签；完整便签包请使用 2.3.4 或更新版本导入。
 
 ### 真实界面示例
 
-以下图片使用软件原生控件渲染，全部文件名、便签内容和图标均为专门制作的演示数据，没有使用作者的真实桌面内容。上方宣传图基于这些截图制作，并包含 AI 辅助视觉排版。
+以下图片为早期版本的原生界面示例，功能和迁移范围以最新版说明为准。全部文件名、便签内容和图标均为专门制作的演示数据，没有使用作者的真实桌面内容。上方宣传图基于这些截图制作，并包含 AI 辅助视觉排版。
 
 ![Deskora 原生分类与便签界面，虚构示例文件](desktop-demo.png)
 
@@ -80,8 +82,8 @@ Deskora is a native desktop organizer for Windows 11. Arrange files in transpare
 - **A simple native app.** One self-contained EXE, with no separate .NET runtime installation. See Releases for the actual download size.
 - **Adaptive layout.** Responds to resolution, display scaling and available space. The current version focuses on a single desktop display, rather than independent extended-monitor layouts.
 - **Optional motion.** Choose gentle effects, playful monster effects, or none. Visual feedback does not change the distinction between recycling and permanent deletion.
-- **Multi-page sticky notes.** Quick notes, wheel-based page switching, rich text, images and pinned pages.
-- **Category backup and import.** Export settings, layouts, category assignments and ordering to a `.des` file, then match existing desktop items on another PC.
+- **Sticky notes and note wall.** Rich text, images, colors and pinned pages; view and edit notes together, select multiple notes and restore them from the note recycle bin.
+- **Category and note backup.** Export settings, category layouts and ordering, note contents and images to a `.des` package for migration to another PC.
 - **Desktop search.** Find files on your desktop quickly.
 
 ### Get started
@@ -92,9 +94,11 @@ Download the latest `Deskora-<version>-win-x64.exe` from [Releases](https://gith
 
 Export the configuration on the old PC, transfer your actual files separately, and import the `.des` configuration on the new PC. Review the import preview before applying it.
 
-**Configuration packages do not include actual files, note contents or attachments.** Missing or ambiguous matches are skipped. Import preserves existing notes and the local startup setting, and retains one pre-import configuration backup.
+Since 2.3.4, new `.des` packages include settings, category layouts and ordering, **note contents, rich text, images, colors, pinned positions and the note recycle bin**. Desktop files themselves are not included. Missing or ambiguous desktop matches are skipped. Notes are merged: conflicts preserve both versions, and repeated imports do not create the same copy again. The local startup preference is preserved, and a full pre-import backup is retained.
 
-All screenshots use production controls with fictional filenames, notes and custom sample icons. Promotional artwork uses these screenshots with AI-assisted visual composition. No personal desktop content is shown.
+Legacy configuration packages remain supported, but cannot restore notes that were never exported. Import full note packages with version 2.3.4 or later.
+
+Screenshots illustrate earlier versions using production controls with fictional filenames, notes and custom sample icons. See the latest description for current features and migration coverage. Promotional artwork uses these screenshots with AI-assisted visual composition. No personal desktop content is shown.
 
 This repository hosts product information and official downloads; source code is not published. **Free for personal, non-commercial use. Commercial use and profit-making activities require authorization.** See [NOTICE](NOTICE.md) for the complete usage and third-party attribution information.
 
